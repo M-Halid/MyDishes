@@ -31,7 +31,6 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.ByteArrayOutputStream;
 
 public class DishesActivity extends AppCompatActivity {
-
     private ActivityDishesBinding binding;
     private ActivityResultLauncher<Intent> activityResultLauncher;
     private ActivityResultLauncher<String> permissionLauncher;
@@ -70,7 +69,7 @@ public class DishesActivity extends AppCompatActivity {
             while (cursor.moveToNext()){
                 binding.foodName.setText(cursor.getString(foodNameIx));
                 binding.foodLoc.setText(cursor.getString(foodLocIx));
-                binding.foodIngr.setText(cursor.getString(foodLocIx));
+                binding.foodIngr.setText(cursor.getString(foodIgrIx));
 
                 byte[] bytes=cursor.getBlob(foodImageIx);
                 Bitmap bitmap= BitmapFactory.decodeByteArray(bytes,0,bytes.length);
@@ -130,7 +129,8 @@ public class DishesActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.TIRAMISU){
             if(ContextCompat.checkSelfPermission(DishesActivity.this, Manifest.permission.READ_MEDIA_IMAGES)!= PackageManager.PERMISSION_GRANTED){
             //Retionale
-            if(ActivityCompat.shouldShowRequestPermissionRationale(DishesActivity.this,Manifest.permission.READ_MEDIA_IMAGES)){
+            if(ActivityCompat.shouldShowRequestPermissionRationale(DishesActivity.this,
+                    Manifest.permission.READ_MEDIA_IMAGES)){
                 Snackbar.make(view,"Permission needed for Gallery",Snackbar.LENGTH_INDEFINITE).setAction("Give Permission", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

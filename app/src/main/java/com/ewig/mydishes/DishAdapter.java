@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishHolder> {
     ArrayList<Dish> dishArrayList;
+
     public DishAdapter(ArrayList<Dish> dishArrayList){
         this.dishArrayList=dishArrayList;
     }
